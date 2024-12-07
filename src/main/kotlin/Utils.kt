@@ -1,5 +1,6 @@
 import kotlin.io.path.Path
 import kotlin.io.path.readText
+import kotlin.system.measureTimeMillis
 
 fun readInput() = Path("src/input.txt").readText().trim().lines()
 
@@ -11,5 +12,13 @@ fun <T> List<List<T>>.forEachIndexed2(block: (Int, Int, T) -> Unit) {
         xs.forEachIndexed { j, x ->
             block(i, j, x)
         }
+    }
+}
+
+suspend fun withTime(block: suspend () -> Unit) {
+    measureTimeMillis {
+        block()
+    }.also {
+        println("Execution time: $it ms")
     }
 }
