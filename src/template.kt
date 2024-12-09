@@ -1,3 +1,5 @@
+private val input = readInput()
+
 private fun part1() {
 
 }
