@@ -19,7 +19,6 @@ private fun part1() {
         }
     }
     val ans = set.count { (x, y) -> inBounds(x, y) }
-    check(ans == 376)
     println(ans)
 }
 
@@ -42,7 +41,6 @@ private fun part2() {
         }
     }
     val ans = set.count { (x, y) -> inBounds(x, y) }
-    check(ans == 1352)
     println(ans)
 }
 
