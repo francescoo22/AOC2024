@@ -45,3 +45,5 @@ fun runIfInBounds(block: () -> Unit) {
     } catch (_: IndexOutOfBoundsException) {
     }
 }
+
+infix fun Int.mod(b: Int): Int = ((this % b) + b) % b
