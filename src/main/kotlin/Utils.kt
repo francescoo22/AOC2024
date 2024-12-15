@@ -47,3 +47,14 @@ fun runIfInBounds(block: () -> Unit) {
 }
 
 infix fun Int.mod(b: Int): Int = ((this % b) + b) % b
+
+fun directionFromChar(c: Char) =
+    when (c) {
+        '>' -> 0 to 1
+        '<' -> 0 to -1
+        '^' -> -1 to 0
+        'v' -> 1 to 0
+        else -> throw IllegalArgumentException(
+            "Expected one of the following chars to be converted into a direction: '<', '>', '^', 'v'"
+        )
+    }
