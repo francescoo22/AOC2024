@@ -1,5 +1,7 @@
+import java.math.BigInteger
 import kotlin.io.path.Path
 import kotlin.io.path.readText
+import kotlin.math.abs
 import kotlin.system.measureTimeMillis
 
 val NorthSouthWestEast = listOf(1 to 0, 0 to 1, -1 to 0, 0 to -1)
@@ -58,3 +60,22 @@ fun directionFromChar(c: Char) =
             "Expected one of the following chars to be converted into a direction: '<', '>', '^', 'v'"
         )
     }
+
+infix fun IntInt.plus(other: IntInt): IntInt = first + other.first to second + other.second
+
+fun manhattan(a: IntInt, b: IntInt): Int = abs(a.first - b.first) + abs(a.second - b.second)
+
+val factorial = mutableListOf(BigInteger.ONE)
+
+fun factorial(n: Int): BigInteger {
+    require(n >= 0) { "Factorial is not defined for negative numbers." }
+    if (n < factorial.size) return factorial[n]
+    var result = factorial.last()
+    for (i in factorial.size..n) {
+        result = result.multiply(BigInteger.valueOf(i.toLong()))
+        factorial.add(result)
+    }
+    return result
+}
+
+fun bin (a: Int, b: Int) = factorial(a) / (factorial(b) * factorial(a - b))
