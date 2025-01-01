@@ -57,7 +57,18 @@ fun directionFromChar(c: Char) =
         '^' -> -1 to 0
         'v' -> 1 to 0
         else -> throw IllegalArgumentException(
-            "Expected one of the following chars to be converted into a direction: '<', '>', '^', 'v'"
+            "Expected one of the following chars to be converted into a direction: '<', '>', '^', 'v', but got $c"
+        )
+    }
+
+fun charFromDirection(dir: IntInt) =
+    when (dir) {
+        0 to 1 -> '>'
+        0 to -1 -> '<'
+        -1 to 0 -> '^'
+        1 to 0 -> 'v'
+        else -> throw IllegalArgumentException(
+            "Expected one of the following directions to be converted into a char: (0,1), (0,-1), (-1,0), (1,0), but got $dir)"
         )
     }
 
@@ -78,4 +89,4 @@ fun factorial(n: Int): BigInteger {
     return result
 }
 
-fun bin (a: Int, b: Int) = factorial(a) / (factorial(b) * factorial(a - b))
+fun bin(a: Int, b: Int) = factorial(a) / (factorial(b) * factorial(a - b))
